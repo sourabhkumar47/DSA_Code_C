@@ -3,7 +3,51 @@ using namespace std;
 
 int main() {
 
-  
+  // hollow diamond mix
+  int n;
+  cin >> n;
+
+  for (int row = 0; row < n; row++) {
+
+    // first hald piramid
+    for (int col = 0; col < n - row; col++) {
+      cout << "*";
+    }
+
+    // Piramid
+    for (int col = 0; col < 2 * row + 1; col++) {
+      cout << " ";
+    }
+
+    // second hald piramid
+    for (int col = 0; col < n - row; col++) {
+      cout << "*";
+    }
+
+    cout << endl;
+  }
+
+  // downward
+
+  for (int row = 0; row < n; row++) {
+    // first half piramid
+    for (int col = 0; col < row + 1; col++) {
+      cout << "*";
+    }
+
+    // // Piramid
+    for (int col = 0; col < 2 * n - 2 * row - 1; col++) {
+      cout << " ";
+    }
+
+    // second half piramid
+    for (int col = 0; col < row + 1; col++) {
+      cout << "*";
+    }
+
+    cout << endl;
+  }
+
   // Diamond
   // int n;
   // cin >> n;

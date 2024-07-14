@@ -3,42 +3,103 @@ using namespace std;
 
 int main() {
 
+
+  //hollow number triangle
+  int n;
+  cin>>n;
+
+  for(int i=0;i<n;i++){
+
+    for(int space=0;space<n-i-1;space++){
+          cout<<" ";
+    }
+
+    int start =1;
+    for(int j=0;j<2*i+1;j++){
+      if(i==0 || i==n-1){
+        if(j%2==0){
+          cout<<start;
+          start=start+1;
+        }else{
+          cout<<" ";
+        }
+      }else{
+        if(j==0){
+           cout<<1;
+        }else if(j== 2*i){
+          cout<<i+1;
+        }
+        else{
+          cout<<" ";
+        }
+       
+        
+      }
+      
+    }
+    cout<<endl;
+  }
+
+
+  //number traingle and reverse
+  // int n;
+  // cin>>n;
+
+  // for(int i=0;i<n;i++){
+    
+  //   for(int space=0;space<n-i-1;space++){
+  //     cout<<" ";
+  //   }
+    
+  //   for(int j=0;j<i+1;j++){
+  //     cout<<i+j+1;
+  //   }
+
+  //   int start = 2*i;
+  //   for(int rev=0;rev<i;rev++){
+  //     cout<<start;
+  //     start--;
+  //   }
+  //   cout<<endl;
+  // }
+  
+
   // butterfly
 
-  int n;
-  cin >> n;
+  // int n;
+  // cin >> n;
 
-  // upper
-  for (int row = 0; row < n; row++) {
-    for (int col = 0; col < row + 1; col++) {
-      cout << "*";
-    }
+  // // upper
+  // for (int row = 0; row < n; row++) {
+  //   for (int col = 0; col < row + 1; col++) {
+  //     cout << "*";
+  //   }
 
-    for (int col = 0; col < 2 * n - 2 * row - 2; col++) {
-      cout << " ";
-    }
+  //   for (int col = 0; col < 2 * n - 2 * row - 2; col++) {
+  //     cout << " ";
+  //   }
 
-    for (int col = 0; col < row + 1; col++) {
-      cout << "*";
-    }
-    cout << endl;
-  }
+  //   for (int col = 0; col < row + 1; col++) {
+  //     cout << "*";
+  //   }
+  //   cout << endl;
+  // }
 
-  // lower
-  for (int row = 0; row < n; row++) {
-    for (int col = 0; col < n-row; col++) {
-      cout << "*";
-    }
+  // // lower
+  // for (int row = 0; row < n; row++) {
+  //   for (int col = 0; col < n-row; col++) {
+  //     cout << "*";
+  //   }
 
-    for (int col = 0; col < 2 * row; col++) {
-      cout << " ";
-    }
+  //   for (int col = 0; col < 2 * row; col++) {
+  //     cout << " ";
+  //   }
 
-    for (int col = 0; col < n-row; col++) {
-      cout << "*";
-    }
-    cout << endl;
-  }
+  //   for (int col = 0; col < n-row; col++) {
+  //     cout << "*";
+  //   }
+  //   cout << endl;
+  // }
 
   // hollow right
   //  int n;

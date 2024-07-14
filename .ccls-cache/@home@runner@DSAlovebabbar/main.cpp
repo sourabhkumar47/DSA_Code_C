@@ -3,50 +3,154 @@ using namespace std;
 
 int main() {
 
-  // hollow diamond mix
+  // butterfly
+
   int n;
   cin >> n;
 
+  // upper
   for (int row = 0; row < n; row++) {
-
-    // first hald piramid
-    for (int col = 0; col < n - row; col++) {
-      cout << "*";
-    }
-
-    // Piramid
-    for (int col = 0; col < 2 * row + 1; col++) {
-      cout << " ";
-    }
-
-    // second hald piramid
-    for (int col = 0; col < n - row; col++) {
-      cout << "*";
-    }
-
-    cout << endl;
-  }
-
-  // downward
-
-  for (int row = 0; row < n; row++) {
-    // first half piramid
     for (int col = 0; col < row + 1; col++) {
       cout << "*";
     }
 
-    // // Piramid
-    for (int col = 0; col < 2 * n - 2 * row - 1; col++) {
+    for (int col = 0; col < 2 * n - 2 * row - 2; col++) {
       cout << " ";
     }
 
-    // second half piramid
     for (int col = 0; col < row + 1; col++) {
       cout << "*";
     }
-
     cout << endl;
   }
+
+  // lower
+  for (int row = 0; row < n; row++) {
+    for (int col = 0; col < n-row; col++) {
+      cout << "*";
+    }
+
+    for (int col = 0; col < 2 * row; col++) {
+      cout << " ";
+    }
+
+    for (int col = 0; col < n-row; col++) {
+      cout << "*";
+    }
+    cout << endl;
+  }
+
+  // hollow right
+  //  int n;
+  //  cin >> n;
+
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j < n - i; j++) {
+  //     if (i != 0) {
+  //       if (j == 0 || j == n - i - 1) {
+  //         cout << "* ";
+  //       } else {
+  //         cout << "  ";
+  //       }
+  //     } else if (i == 0 && j<n-i) {
+  //       cout << "* ";
+  //     }
+  //   }
+  //   cout << endl;
+  // }
+
+  // Alphabet patens withe reverse ABCDCBA
+  //  int n;
+  //  cin >> n;
+  //  for (int i = 0; i < n; i++) {
+
+  //   for (int j = 0; j < i + 1; j++) {
+  //     int ans = j+1;
+  //     char ch = ans+'A'-1;
+  //     cout << ch;
+  //   }
+
+  //   for (int k=i; k >= 1; k--) {
+  //     int ans = k;
+  //     char ch = ans+'A'-1;
+  //     cout << ch;
+  //   }
+
+  //   cout << endl;
+  // }
+
+  // number and star in betwwen number
+
+  // int n;
+  // cin >> n;
+
+  // // upper half
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j < i + 1; j++) {
+  //     cout << i + 1;
+  //     if (j != i) {
+  //       cout << "*";
+  //     }
+  //   }
+  //   cout << endl;
+  // }
+
+  // // lower half
+
+  // for (int i = 0; i < n; i++) {
+  //   for (int j = 0; j < n - i; j++) {
+  //     cout << n - i;
+  //     if (j != n - i - 1) {
+  //       cout << "*";
+  //     }
+  //   }
+  //   cout << endl;
+  // }
+
+  // hollow diamond mix
+  // int n;
+  // cin >> n;
+
+  // for (int row = 0; row < n; row++) {
+
+  //   // first hald piramid
+  //   for (int col = 0; col < n - row; col++) {
+  //     cout << "*";
+  //   }
+
+  //   // Piramid
+  //   for (int col = 0; col < 2 * row + 1; col++) {
+  //     cout << " ";
+  //   }
+
+  //   // second hald piramid
+  //   for (int col = 0; col < n - row; col++) {
+  //     cout << "*";
+  //   }
+
+  //   cout << endl;
+  // }
+
+  // // downward
+
+  // for (int row = 0; row < n; row++) {
+  //   // first half piramid
+  //   for (int col = 0; col < row + 1; col++) {
+  //     cout << "*";
+  //   }
+
+  //   // // Piramid
+  //   for (int col = 0; col < 2 * n - 2 * row - 1; col++) {
+  //     cout << " ";
+  //   }
+
+  //   // second half piramid
+  //   for (int col = 0; col < row + 1; col++) {
+  //     cout << "*";
+  //   }
+
+  //   cout << endl;
+  // }
 
   // Diamond
   // int n;

@@ -75,21 +75,21 @@ void printRowSum(int arr[][3], int row, int col) {
   }
 }
 
-int main() {
+// int main() {
 
-  int row = 5;
-  int col = 5;
+  // int row = 5;
+  // int col = 5;
 
-  vector<vector<int>> arr(row, vector<int>(col, -8));
+  // vector<vector<int>> arr(row, vector<int>(col, -8));
 
   // vector<vector<double> >arr(row,vector<double>(col,10.8));
 
-  for (int i = 0; i < arr.size(); i++) {
-    for (int j = 0; j < arr[i].size(); j++) {
-      cout << arr[i][j] << " ";   
-    }
-    cout << endl;
-  }
+  // for (int i = 0; i < arr.size(); i++) {
+  //   for (int j = 0; j < arr[i].size(); j++) {
+  //     cout << arr[i][j] << " ";   
+  //   }
+  //   cout << endl;
+  // }
 
   // int arr[3][3] = {
   // {2, 2, 24},
@@ -132,4 +132,4 @@ int main() {
   //   cout << endl;
   // }
   // cout << ans << endl;
-}
+// }

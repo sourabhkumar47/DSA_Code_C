@@ -52,12 +52,67 @@ void allPairs(int arr[], int size) {
   }
 }
 
-void rotateArray(int arr[], int size) {
+void rotateArrayBy1(int arr[], int size) {
   int temp = arr[size - 1];
   for (int i = size - 1; i > 0; i--) {
     arr[i] = arr[i - 1];
   }
   arr[0] = temp;
+}
+
+void rotateArrayBy2(int arr[], int size) {
+  int tempLast = arr[size - 1];
+  int tempLastLast = arr[size - 2];
+  for (int i = size - 1; i > 1; i--) {
+    arr[i] = arr[i - 2];
+  }
+  arr[0] = tempLastLast;
+  arr[1] = tempLast;
+}
+
+
+//(i + k) % n -> modulo operator 
+//it will give the index of where to to store the value from original array into new array.
+//e.g rotated by 1
+//arr=[2,5,6,9,8,7,4,5]
+//after rotation by 2= [4,5,2,5,6... ] 
+//(index+k)%size
+//so new index is = (2+2)%8 = 4 //so 2 nd index is now at 4th index in new array
+
+vector<int> rotateArrayByUserInput(vector<int>& arr, int k) {
+  int n = arr.size();
+  vector<int> ans(n);
+  for (int i = 0; i < n; i++) {
+    int newIndex = (i + k) % n;
+    ans[newIndex] = arr[i];
+  }
+  arr = ans;
+  return arr;
+}
+
+// sort -ve ans +ve
+void arrangNegativeAndPos(int arr[], int size) {
+  int start = 0;
+  int end = size - 1;
+  while (start <= end) {
+    if (arr[start] > 0) {
+      swap(arr[start], arr[end]);
+      cout << "inside if block swapping" << arr[start] << " " << arr[end]
+           << endl;
+      end--;
+      for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+      }
+      cout << endl;
+    } else {
+      cout << "inside else block increasing" << arr[start++] << endl;
+      start++;
+      for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+      }
+      cout << endl;
+    }
+  }
 }
 
 int main() {
@@ -72,20 +127,26 @@ int main() {
 
   // sortColor(arr,size);
 
-  int arr[] = {10, 20, 30, 40, 50};
-  int size = 5;
+  // int arr[] = {1,-1};
+  vector<int> arr = {23, -7, -10, -11, 40, 60};
 
-  rotateArray(arr,size);
+  int size = 6;
+
+  // arrangNegativeAndPos(arr, size);
+  rotateArrayByUserInput(arr, 3);
+
+  cout << "final value" << endl;
+  for (int i = 0; i < size; i++) {
+    cout << arr[i] << " ";
+  }
+
+  // rotateArrayBy2(arr, size);
   // vector<int> ans;
 
   // for (int i = 0; i < size; i++) {
   //   ans.push_back(arr[i+1]);
   // }
   // ans.insert(ans.end()-1,arr[0]);
-
-  for (int i = 0; i < size; i++) {
-    cout << arr[i] << " " << endl;
-  }
 
   // allPairs(arr, s);
 

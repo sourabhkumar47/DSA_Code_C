@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -265,6 +266,24 @@ double MaxSum(vector<int> &arr, int k) {
   return maxSum / k;
 }
 
+//Print matrix in wave form
+void waveFormMatrix(vector<vector<int>> arr) {
+  for (int i = 0; i < arr[i].size(); i++) {
+
+    if (i % 2 == 0) {
+      for (int j = 0; j <= arr[i].size(); j++) {
+        cout << arr[j][i] << " ";
+      }
+    } else {
+      for (int j = arr[i].size(); j >= 0; j--) {
+        cout << arr[j][i] << " ";
+      }
+    }
+
+    // cout << endl;
+  }
+}
+
 int main() {
 
   // dutch national flag
@@ -279,19 +298,32 @@ int main() {
 
   // int arr[] = {1,-1};
 
-  vector<int> arr = {
-      8860,  -853,  6534,  4477,  -4589, 8646,  -6155, -5577, -1656, -5779,
-      -2619, -8604, -1358, -8009, 4983,  7063,  3104,  -1560, 4080,  2763,
-      5616,  -2375, 2848,  1394,  -7173, -5225, -8244, -809,  8025,  -4072,
-      -4391, -9579, 1407,  6700,  2421,  -6685, 5481,  -1732, -8892, -6645,
-      3077,  3287,  -4149, 8701,  -4393, -9070, -1777, 2237,  -3253, -506,
-      -4931, -7366, -8132, 5406,  -6300, -275,  -1908, 67,    3569,  1433,
-      -7262, -437,  8303,  4498,  -379,  3054,  -6285, 4203,  6908,  4433,
-      3077,  2288,  9733,  -8067, 3007,  9725,  9669,  1362,  -2561, -4225,
-      5442,  -9006, -429,  160,   -9234, -4444, 3586,  -5711, -9506, -79,
-      -4418, -4348, -5891};
+  // vector<int> nums = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
 
-  cout << MaxSum(arr, 93);
+  vector<vector<int>> arr = {{1, 6, 11, 16},
+                             {2, 7, 12, 17},
+                             {3, 8, 13, 18},
+                             {4, 9, 14, 19},
+                             {5, 10, 15, 20}};
+
+  // int row = 5;
+  // int col = 4;
+
+  // int odd = 0;
+
+  // waveFormMatrix(arr[4][5],row,col);
+
+  // int n = sizeof(arr) / sizeof(arr[0]);
+
+  // sort(nums.begin(), nums.end());
+
+  // for (int i = 0; i < nums.size(); i++) {
+  //   cout << nums[i] << endl;
+  // }
+  // cout << sizeof(arr[0]) <<endl;
+  // cout << n<<endl;
+
+  // cout << MaxSum(arr, 93);
 
   // vector<vector<int>> arr1{{6, 1, 5}, {1, 0, 8}};
 

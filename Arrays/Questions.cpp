@@ -5,6 +5,14 @@ using namespace std;
 
 // sort color
 // Using Dutch National Flag algorithm
+
+// dutch national flag
+// in this we take 3 pointers,
+// Time complexity: O(n)
+// Space complexity: O(1)
+
+// int arr[] = {2,0,2,1,1,0};
+// int size = 6;
 void sortColor(int arr[], int size) {
   int low = 0;
   int mid = 0;
@@ -266,7 +274,7 @@ double MaxSum(vector<int> &arr, int k) {
   return maxSum / k;
 }
 
-//Print matrix in wave form
+// Print matrix in wave form
 void waveFormMatrix(vector<vector<int>> arr) {
   for (int i = 0; i < arr[i].size(); i++) {
 
@@ -284,15 +292,54 @@ void waveFormMatrix(vector<vector<int>> arr) {
   }
 }
 
+//printing spiral matrix
+vector<int> spiralMatrix(vector<vector<int>>& arr) {
+
+  vector<int> ans;
+
+  int row = arr.size();
+  int col = arr[0].size();
+
+  int top = 0;
+  int bottom = row - 1;
+  int left = 0;
+  int right = col - 1;
+
+  while (top <= bottom && left <= right) {
+    // Traverse from left to right
+    for (int i = left; i <= right; ++i) {
+      ans.push_back(arr[top][i]);
+    }
+    top++;
+
+    // Traverse downwards
+    for (int i = top; i <= bottom; ++i) {
+      ans.push_back(arr[i][right]);
+    }
+    right--;
+
+    // Make sure we are now on a different row
+    if (top <= bottom) {
+      for (int i = right; i >= left; --i) {
+        // cout<<arr[right][i];
+        ans.push_back(arr[bottom][i]);
+      }
+      bottom--;
+    }
+
+    // Make sure we are now in a different column
+    if (left <= right) {
+      for (int i = bottom; i >= top; --i) {
+        // cout<<arr[i][left];
+        ans.push_back(arr[i][left]);
+      }
+      left++;
+    }
+  }
+  return ans;
+}
+
 int main() {
-
-  // dutch national flag
-  // in this we take 3 pointers,
-  // Time complexity: O(n)
-  // Space complexity: O(1)
-
-  // int arr[] = {2,0,2,1,1,0};
-  // int size = 6;
 
   // sortColor(arr,size);
 
@@ -300,11 +347,27 @@ int main() {
 
   // vector<int> nums = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
 
-  vector<vector<int>> arr = {{1, 6, 11, 16},
-                             {2, 7, 12, 17},
-                             {3, 8, 13, 18},
-                             {4, 9, 14, 19},
-                             {5, 10, 15, 20}};
+  vector<vector<int>> arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+  for (int i = 0; i < ans.size(); i++) {
+
+    cout << ans[i] << " ";
+  }
+
+  // int arr1[] = {1, 2, 3, 4};
+  // int n = 4;
+
+  // for (int i = 0; i < n - 1; i++) {
+  //   if (i == 0 || i % 2 == 0) {
+  //     swap(arr1[i], arr1[i + 1]);
+  //     cout << "Swapping for" << i << " " << arr1[i] << " " << arr1[i + 1]
+  //          << endl;
+  //   }
+  // }
+
+  // for (int i = 0; i < n; i++) {
+  //   cout << arr1[i] << " ";
+  // }
 
   // int row = 5;
   // int col = 4;
@@ -317,9 +380,6 @@ int main() {
 
   // sort(nums.begin(), nums.end());
 
-  // for (int i = 0; i < nums.size(); i++) {
-  //   cout << nums[i] << endl;
-  // }
   // cout << sizeof(arr[0]) <<endl;
   // cout << n<<endl;
 

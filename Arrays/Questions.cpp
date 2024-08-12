@@ -212,19 +212,19 @@ int findPivot(vector<int> &nums) {
 // 0, 0, 1, 1, 1, 2, 2, 3, 3, 4
 // 0, 1, 2, 3, 4, 5, 6,
 void removeDuplicate(vector<int> &arr) {
-  // int i = 0;
-  // int start = arr[0];
-  // int end = arr.size();
+  int i = 0;
+  int start = arr[0];
+  int end = arr.size();
 
-  // while (i < end) {
-  //   cout << "For i " << i << endl;
-  //   if (arr[i] == arr[i + 1]) {
-  //     cout << "removing " << arr[i] << " or " << arr[i + 1] << endl;
-  //     arr.erase(arr.begin() + i);
-  //     end--;
-  //     start++;
-  //     i++;
-  //   }
+  while (i < end) {
+    cout << "For i " << i << endl;
+    if (arr[i] == arr[i + 1]) {
+      cout << "removing " << arr[i] << " or " << arr[i + 1] << endl;
+      arr.erase(arr.begin() + i);
+      end--;
+      start++;
+      i++;
+    }
 
   for (int i = 0; i < arr.size() - 1; i++) {
     cout << "For i " << i << endl;

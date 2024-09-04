@@ -128,12 +128,37 @@ int missing(int arr[], int size)
     return ans + 1;
 }
 
+// Finding peak element in mountain array
+
+int peakElement(int arr[], int size)
+{
+    int start = 0;
+    int end = size - 1;
+
+    while (start < end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] < arr[mid + 1])
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            // we are not adding -1 bcs mid might be peak element
+            end = mid;
+        }
+    }
+
+    return arr[start];
+}
+
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-    int size = 11;
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3, 2, 1};
+    int size = 14;
 
-    int ans = missing(arr, size);
+    int ans = peakElement(arr, size);
 
     cout << "Missing number: " << ans;
 }

@@ -49,7 +49,7 @@ int firstOccurance(int arr[], int size, int target)
         }
         else
         {
-            end = mid + 1;
+            end = mid - 1;
         }
     }
 
@@ -78,7 +78,7 @@ int lastOccurance(int arr[], int size, int target)
         }
         else
         {
-            end = mid + 1;
+            end = mid - 1;
         }
     }
 
@@ -98,12 +98,42 @@ int countOccurance(int arr[], int size, int target)
     return total;
 }
 
+// Find missing in sorted array
+int missing(int arr[], int size)
+{
+    int start = 0;
+    int end = size - 1;
+    int ans = -1;
+
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+
+        int diff = arr[mid] - mid;
+
+        if (diff == 1)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            ans = mid;
+            end = mid - 1;
+        }
+    }
+    if (ans + 1 == 0)
+    {
+        return size + 1;
+    }
+    return ans + 1;
+}
+
 int main()
 {
-    int arr[] = {2, 3, 4, 4, 4, 5, 6, 7, 8, 9, 10};
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
     int size = 11;
 
-    int ans = countOccurance(arr, size, 4);
+    int ans = missing(arr, size);
 
-    cout << "Total occurance: ";
+    cout << "Missing number: " << ans;
 }

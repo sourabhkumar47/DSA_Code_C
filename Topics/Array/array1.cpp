@@ -1,39 +1,67 @@
-// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
+#include <utility>
 
-// void swap1(int &a, int &b) {
-//   int temp = a;
-//   a = b ;
-//   b = temp;
-// }
+void swap1(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
 
-// int main() {
-//   int arr[8] = {3, 67, 54, 78, 45, 65, 6, 8};
+void swap2(int a, int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
 
-//   int size = 8;
+void reverseArray(int arr[], int size)
+{
+    int start = 0;
+    int end = size - 1;
 
-//   for (int i = 0; i < size; i++) {
-//     cout << arr[i] << " ";
-//   }
+    while (start <= end)
+    {
+        // swap1(arr[start], arr[end]);
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
 
-//   cout << endl;
+// print one from start and one from end
 
-//   int start = 0;
-//   int end = size - 1;
-//   // while (start < end) {
-//   //   cout << arr[start] << endl;
-//   //   start++;
-//   //   cout << arr[end] << endl;
-//   //   end--;
-//   // }
+void extremePrint(int arr[], int size)
+{
+    int start = 0;
+    int end = size - 1;
+    while (start <= end)
+    {
+        cout << arr[start] << " ";
+        if (start == end)
+        {
+            break;
+        }
+        start++;
 
-//   while (start <= end) {
-//     swap1(arr[start], arr[end]);
-//     start++;
-//     end--;
-//   }
+        cout << arr[end] << " ";
+        end--;
+    }
+}
 
-//   for (int i = 0; i < size; i++) {
-//     cout << arr[i] << " ";
-//   }
-// }
+int main()
+{
+    int arr[9] = {3, 67, 54, 78, 5, 45, 65, 6, 8};
+
+    int size = 9;
+
+    // extremePrint(arr, size);
+
+    reverseArray(arr, size);
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}

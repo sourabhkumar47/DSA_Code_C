@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <utility>
+#include <algorithm>
 
 void swap1(int &a, int &b)
 {
@@ -16,6 +17,7 @@ void swap2(int a, int b)
     b = temp;
 }
 
+// Reverse array method 1
 void reverseArray(int arr[], int size)
 {
     int start = 0;
@@ -24,9 +26,12 @@ void reverseArray(int arr[], int size)
     while (start <= end)
     {
         // swap1(arr[start], arr[end]);
-        swap(arr[start], arr[end]);
-        start++;
-        end--;
+        // swap(arr[start], arr[end]);
+        // start++;
+        // end--;
+
+        // in this we will first use the value then increment
+        swap(arr[start++], arr[end--]);
     }
 }
 
@@ -58,7 +63,10 @@ int main()
 
     // extremePrint(arr, size);
 
-    reverseArray(arr, size);
+    // reverseArray(arr, size);
+
+    // Reverse array method 2 - stl
+    // reverse(arr,arr+size);
 
     for (int i = 0; i < size; i++)
     {

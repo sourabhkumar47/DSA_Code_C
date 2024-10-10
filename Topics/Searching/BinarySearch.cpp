@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 // Simple binary search
@@ -9,7 +11,7 @@ int binarysearch(int arr[], int size, int target)
 
     while (start <= end)
     {
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;
 
         if (arr[mid] == target)
         {
@@ -56,6 +58,78 @@ int firstOccurance(int arr[], int size, int target)
     return ans;
 }
 
+// First occurance with vector
+int firstOccuranceVector(vector<int> arr, int target)
+{
+    int start = 0;
+    int end = arr.size() - 1;
+
+    int tempAns = -1;
+
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] == target)
+        {
+            // store temp ans in this variable
+            tempAns = mid;
+            // search for any other value in left part
+            end = mid - 1;
+        }
+        else if (arr[mid] > target)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+    }
+
+    return tempAns;
+}
+
+//  occurance with vector - front and both in one
+// if first = end = mid-1; else start = mid+1;
+int OccuranceVector(vector<int> arr, int target, bool first)
+{
+    int start = 0;
+    int end = arr.size() - 1;
+
+    int tempAns = -1;
+
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] == target)
+        {
+            // store temp ans in this variable
+            tempAns = mid;
+            // search for any other value in left part
+            if (first)
+            {
+                end = mid - 1;
+            }
+            else
+            {
+                start = mid + 1;
+            }
+        }
+        else if (arr[mid] > target)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+    }
+
+    return tempAns;
+}
+
 // Last occurance in binary search
 int lastOccurance(int arr[], int size, int target)
 {
@@ -83,6 +157,38 @@ int lastOccurance(int arr[], int size, int target)
     }
 
     return ans;
+}
+
+// last occurance vectot
+int lastOccuranceVector(vector<int> arr, int target)
+{
+    int start = 0;
+    int end = arr.size() - 1;
+
+    int tempAns = -1;
+
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] == target)
+        {
+            // store temp ans in this variable
+            tempAns = mid;
+            // search for any other value in left part
+            start = mid + 1;
+        }
+        else if (arr[mid] > target)
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+    }
+
+    return tempAns;
 }
 
 // Count total number of occurance of any repeating number
@@ -155,10 +261,14 @@ int peakElement(int arr[], int size)
 
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3, 2, 1};
-    int size = 14;
+    // int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3, 2, 1};
+    // int size = 14;
 
-    int ans = peakElement(arr, size);
+    vector<int> arr = {0, 1};
+    int target = 8;
+    bool first = false;
+
+    int ans = missing2(arr);
 
     cout << "Missing number: " << ans;
 }

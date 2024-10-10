@@ -205,10 +205,10 @@ int countOccurance(int arr[], int size, int target)
 }
 
 // Find missing in sorted array
-int missing(int arr[], int size)
+int missing(vector<int> arr)
 {
     int start = 0;
-    int end = size - 1;
+    int end = arr.size();
     int ans = -1;
 
     while (start <= end)
@@ -229,7 +229,7 @@ int missing(int arr[], int size)
     }
     if (ans + 1 == 0)
     {
-        return size + 1;
+        return end + 1;
     }
     return ans + 1;
 }
@@ -268,7 +268,7 @@ int main()
     int target = 8;
     bool first = false;
 
-    int ans = missing2(arr);
+    int ans = missing(arr);
 
     cout << "Missing number: " << ans;
 }

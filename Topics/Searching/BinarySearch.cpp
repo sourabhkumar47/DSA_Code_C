@@ -234,6 +234,23 @@ int missing(vector<int> arr)
     return ans + 1;
 }
 
+int missing2(vector<int> arr)
+{
+
+    int start = 0;
+    int end = arr.size();
+
+    int sum =0;
+    for(int i=0;i<end;i++){
+        sum += arr[i];
+    }
+
+    int totalSum = end*(end+1)/2;
+
+    return totalSum - sum;
+
+}
+
 // Finding peak element in mountain array
 
 int peakElement(int arr[], int size)
@@ -264,11 +281,11 @@ int main()
     // int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 4, 3, 2, 1};
     // int size = 14;
 
-    vector<int> arr = {0, 1};
+    vector<int> arr = {1,3};
     int target = 8;
     bool first = false;
 
-    int ans = missing(arr);
+    int ans = missing2(arr);
 
     cout << "Missing number: " << ans;
 }

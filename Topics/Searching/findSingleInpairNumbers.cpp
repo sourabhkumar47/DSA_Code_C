@@ -2,36 +2,76 @@
 #include <vector>
 using namespace std;
 
-int findSingleInPair(int arr[], int size)
+// Input: nums = [1,1,2,3,3,4,4,8,8]
+//  Output: 2
+
+int findSingleInPair(vector<int> arr)
 {
     int start = 0;
-    int end = size - 1;
-
+    int end = arr.size() - 1;
     while (start <= end)
     {
         int mid = start + (end - start) / 2;
 
-        if (arr[mid] != arr[mid - 1] && arr[mid] != arr[mid + 1])
+        // If only one element is present
+        if (start == end)
         {
-            return arr[mid];
+            return arr[start];
         }
 
-        if (arr[mid] == arr[mid + 1] && mid % 2 == 0)
+        int currentVal = arr[mid];
+
+        // we created leftIndex and rightIndex to check edge cases like first and last index value
+
+        // leftIndex will be -1 if the mid is at 0th index and no value at mid-1 so we added -1,
+        // else it will be the value at mid-1 index
+        int leftIndex = -1;
+
+        if (mid - 1 >= 0)
         {
-            start = mid + 2;
-        }
-        else if (arr[mid] == arr[mid - 1] && mid - 1 % 2 == 0)
-        {
-            start = mid + 1;
+            leftIndex = arr[mid - 1];
         }
 
-        else if (arr[mid] == arr[mid + 1] && mid % 2 != 0)
+        // rightIndex will be -1 if the mid is at last index and no value at mid+1 so we added -1,
+        // else it will be the value at mid+1 index
+        int rightIndex = -1;
+        if (mid + 1 <= end)
         {
-            end = mid - 1;
+            rightIndex = arr[mid + 1];
         }
-        else if (arr[mid] == arr[mid - 1] && mid - 1 % 2 != 0)
+
+        // For unique  number , left and right will not equal
+        if (currentVal != leftIndex && currentVal != rightIndex)
         {
-            end = mid - 1;
+            return currentVal;
+        }
+
+        // if currentVal (mid ) value is equal to leftIndex (mid-1) then it is in first half
+        // and then check if the mid-1 is at odd index or even index
+        // to check we do value & 1 ,it will return true for odd number
+        if (currentVal == leftIndex && currentVal != rightIndex)
+        {
+            int pairStartingIndex = mid - 1;
+            if (pairStartingIndex & 1)
+            {
+                end = mid - 1;
+            }
+            else
+            {
+                start = mid + 1;
+            }
+        }
+        else if (currentVal == rightIndex && currentVal != leftIndex)
+        {
+            int pairStartingIndex = mid;
+            if (pairStartingIndex & 1)
+            {
+                end = mid - 1;
+            }
+            else
+            {
+                start = mid + 1;
+            }
         }
     }
     return -1;
@@ -39,9 +79,8 @@ int findSingleInPair(int arr[], int size)
 
 int main()
 {
-    int size = 11;
-    int arr[size] = {1, 1, 2, 2, 3, 3, 4,4, 5, 6, 6};
-    int ans = findSingleInPair(arr, size);
+    vector<int> arr = {3, 3, 7, 7, 10, 11, 11};
+    int ans = findSingleInPair(arr);
     cout << "Single number is: " << ans;
 
     return 0;

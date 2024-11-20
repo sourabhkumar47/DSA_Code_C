@@ -7,6 +7,7 @@ using namespace std;
 // https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/
 // Minimum Number of Days to Make m Bouquets
 
+
 // The flower will bloom on only the i th day
 
 int minDays(vector<int> &arr, int m, int k)

@@ -13,10 +13,9 @@ int mySqrt(int x)
     int end = x;
     int ans = -1;
 
-long long int mid = start + (end - start) / 2;
     while (start <= end)
     {
-        
+        long long int mid = start + (end - start) / 2;
 
         if (mid * mid == x)
         {

@@ -30,40 +30,42 @@ int mySqrt(int nums)
     return ans;
 }
 
-double presionSQRT(int n)
-{   
-    // Get the square root of n
-    double sqrt = mySqrt(n);
-    double ans = -1;
-    // Set the precision upto which we want to calculate the square root
-    int precision = 8;
-    //set the step, how much we want to move in each iteration
+double precisonSQRT(int nums)
+{
+    // storing the sqrt of the number
+    double sqrt = mySqrt(nums);
+
+    // precision is the number of decimal places we want to calculate
+    int precision = 15;
+    // steps is the number of decimal places we want to calculate
     double steps = 0.1;
 
     while (precision--)
     {
-
         double j = sqrt;
-
-        while (j * j <= n)
+        while (j * j <= nums)
         {
-            ans = j;
-            // Move the j by steps
+            sqrt = j;
+            // incrementing the number of decimal places
+            // e.g 0.1, 0.01, 0.001, 0.0001
+            // it can also be writeen as j = j + steps
             j += steps;
         }
-        
-        // Decrease the step by 10 times
-        // why: because we want to move the decimal point to the left
-        // after every iteration: 0.1, 0.01, 0.001, 0.0001
-        //steps /= 10 can be written as steps = steps / 10;
+        // decreasing the number of decimal places
+        // e.g 0.1, 0.01, 0.001, 0.0001
         steps /= 10;
     }
-    return ans;
+    return sqrt;
 }
 
 int main()
 {
-    double ans = presionSQRT(63);
-    cout << "ans " << ans;
+    double ans = precisonSQRT(76);
+
+    // cout only prints to limited values so we can use printf to print large values
+    cout << "ans " << ans << endl;
+
+    printf("Ans: %.15f\n", ans);
+
     return 0;
 }

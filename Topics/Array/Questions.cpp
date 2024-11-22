@@ -119,7 +119,7 @@ vector<int> rotateArrayByUserInput(vector<int> &arr, int k)
     }
     arr = ans;
     return arr;
-} 
+}
 
 // sort -ve ans +ve
 void arrangNegativeAndPos(int arr[], int size)

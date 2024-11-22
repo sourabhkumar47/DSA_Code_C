@@ -240,15 +240,15 @@ int missing2(vector<int> arr)
     int start = 0;
     int end = arr.size();
 
-    int sum =0;
-    for(int i=0;i<end;i++){
+    int sum = 0;
+    for (int i = 0; i < end; i++)
+    {
         sum += arr[i];
     }
 
-    int totalSum = end*(end+1)/2;
+    int totalSum = end * (end + 1) / 2;
 
     return totalSum - sum;
-
 }
 
 // Finding peak element in mountain array

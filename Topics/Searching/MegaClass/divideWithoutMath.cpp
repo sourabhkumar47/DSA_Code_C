@@ -6,7 +6,7 @@ using namespace std;
 // Given two integers dividend and divisor, divide two integers
 //  without using multiplication, division, and mod operator.
 
-// int DivideTwoIntegersWithoutTools(int dividendx, int divisorx)
+int DivideTwoIntegersWithoutTools(int dividendx, int divisorx)
 {
 
     // Edge cases: if dividend is INT_MIN and divisor is -1

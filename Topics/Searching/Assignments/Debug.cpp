@@ -256,6 +256,8 @@ int binarySearch2(vector<int> arr, int target)
     }
 }
 
+
+
 int main()
 {
     // vector<int> nums = {5, 6, 1, 2, 3, 4};

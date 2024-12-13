@@ -74,6 +74,7 @@ int findPairs2(vector<int> &arr, int k)
     return ans.size();
 }
 
+// This also not passing all test case as it takes duplicates values
 int findPairs(vector<int> &arr, int k)
 {
     sort(arr.begin(), arr.end());
@@ -102,11 +103,41 @@ int findPairs(vector<int> &arr, int k)
     return counter;
 }
 
+int findPair2(vector<int> &arr, int k)
+{
+    sort(arr.begin(), arr.end());
+
+    int i = 0;
+    int j = 1;
+    set<pair<int, int>> ans;
+    while (j < arr.size())
+    {
+        if (i != j && abs(arr[i] - arr[j]) == k)
+        {
+            ans.insert({arr[i], arr[j]});
+            i++;
+            j++;
+        }
+        // allows us to explore larger values in the sorted array
+        // that may reduce the difference and get closer to k
+        else if (arr[i] - arr[j] > k)
+        {
+            j++;
+        }
+        else
+        //the value at arr[i] is too small relative to arr[j].
+        {
+            i++;
+        }
+    }
+    return ans.size();
+}
+
 int main()
 {
-    vector<int> arr = {1, 2, 3, 4, 5};
-    int k = 1;
-    int ans = findPairs(arr, k);
+    vector<int> arr = {3, 1, 4, 1, 5};
+    int k = 2;
+    int ans = findPair2(arr, k);
     cout << ans;
 
     return 0;

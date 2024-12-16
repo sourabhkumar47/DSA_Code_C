@@ -103,6 +103,7 @@ int findPairs(vector<int> &arr, int k)
     return counter;
 }
 
+// Using 2 pointer approach
 int findPair2(vector<int> &arr, int k)
 {
     sort(arr.begin(), arr.end());
@@ -125,9 +126,48 @@ int findPair2(vector<int> &arr, int k)
             j++;
         }
         else
-        //the value at arr[i] is too small relative to arr[j].
+        // the value at arr[i] is too small relative to arr[j].
         {
             i++;
+        }
+    }
+    return ans.size();
+}
+
+// Using binary serach approach
+int binarySearch(vector<int> &arr, int start, int target)
+{
+    int end = arr.size() - 1;
+
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+
+        if (arr[mid] == target)
+        {
+            return mid;
+        }
+        else if (arr[mid] < target)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int findKDiffPair(vector<int> &arr, int k)
+{
+    sort(arr.begin(), arr.end());
+    set<pair<int, int>> ans;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (binarySearch(arr, i + 1, arr[i] + k) != -1)
+        {
+            ans.insert({arr[i], arr[i] + k});
         }
     }
     return ans.size();
@@ -137,7 +177,7 @@ int main()
 {
     vector<int> arr = {3, 1, 4, 1, 5};
     int k = 2;
-    int ans = findPair2(arr, k);
+    int ans = findKDiffPair(arr, k);
     cout << ans;
 
     return 0;

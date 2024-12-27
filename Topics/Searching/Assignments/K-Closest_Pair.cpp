@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// wrong output
 vector<int> findClosestElements(vector<int> &arr, int k, int x)
 {
     vector<int> result;
@@ -42,7 +43,7 @@ vector<int> findClosestElements(vector<int> &arr, int k, int x)
     return result;
 }
 
-// 2 pointer approach
+// 2 pointer approach - shringking search space- from large array shrink to small , till k values
 // Time Complexity : O(n)
 // Space Complexity : O(1)
 
@@ -56,7 +57,7 @@ vector<int> findClosestElements(vector<int> &arr, int k, int x)
 //
 vector<int> findClosestElements2pointer(vector<int> &arr, int k, int x)
 {
-    vector<int> ans;
+    // vector<int> ans;
 
     int low = 0;
     int high = arr.size() - 1;
@@ -75,19 +76,52 @@ vector<int> findClosestElements2pointer(vector<int> &arr, int k, int x)
         }
     }
 
-    for (int i = low; i <= high; i++)
+    // inserting elements between low and high
+
+    return vector<int>(arr.begin() + low, arr.begin() + high + 1);
+}
+
+// two pointers - expanding array - start from lowest value near k and then expand outwards
+// this is opposite of above in this, the term which is smaller will be moved , like
+// if high is smaller ther h++ else l++
+    
+vector<int> findClosestElements2pointer2approach(vector<int> &arr, int k, int x)
+{
+    //lower bound returns the iterator to the first element >= x
+    //to get index of that element, we subtract the begin iterator from it
+    //e.g if lower bound returns 3, then 3-0 = 3, so index is 3
+    auto it = lower_bound(arr.begin(), arr.end(), x);
+    int high = it - arr.begin();
+    int low = high - 1;
+
+    while (k--)
     {
-        ans.push_back(arr[i]);
+        if (low < 0)
+        {
+            high++;
+        }
+        else if (high > arr.size())
+        {
+            low--;
+        }
+        else if (x - arr[low] > arr[high] - x)
+        {
+            high++;
+        }
+        else
+        {
+            low--;
+        }
     }
 
-    return ans;
+    return vector<int>(arr.begin() + low + 1, arr.begin() + high);
 }
 
 int main()
 {
-    vector<int> arr = {10, 20, 30, 40, 50};
-    int k = 4, x = 35;
-    vector<int> result = findClosestElements2pointer(arr, k, x);
+    vector<int> arr = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    int k = 4, x = 10;
+    vector<int> result = findClosestElements2pointer2approach(arr, k, x);
     for (int i = 0; i < result.size(); i++)
     {
         cout << result[i] << " ";
